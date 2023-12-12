@@ -1,0 +1,48 @@
+@if (isLoadingCourse) {
+  <div class="w-full py-4 flex items-center justify-center">
+    <app-loader></app-loader>
+  </div>
+}
+@else if (course) {
+<div class="container mx-auto p-6">
+  <img class="w-full max-w-lg mx-auto aspect-video object-cover"
+    src="{{course.imageUrl || 'assets/images/course-placeholder.jpg'}}" />
+  <div class="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+    <h2 class="text-2xl font-bold mb-2 text-gray-800">{{ course.title }}</h2>
+    <p class="text-gray-700 text-base mb-4">
+      {{ course.description }}
+    </p>
+    <div class="border-t border-gray-300 pt-4 mt-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-semibold text-gray-800 mb-3">Lectures</h3>
+        <button (click)="isCreateLectureModalOpen = true"
+          class="bg-blue-500 hover:bg-blue-600 text-white flex items-center gap-1 font-bold py-2 px-4 rounded">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Create
+        </button>
+      </div>
+      @if (!(lectures)) {
+        <div class="w-full py-4 flex items-center justify-center">
+          <app-loader></app-loader>
+        </div>
+      } @else {
+        <ul>
+          @for(lecture of lectures; track lecture.title) {
+            <li class="ml-4">
+              <app-lecture-list-item [course]="course" [lecture]="lecture"></app-lecture-list-item>
+            </li>
+          } @empty {
+            No lectures available. Create one.
+          }
+        </ul>
+      }
+    </div>
+  </div>
+</div>
+}
+
+<app-modal [showModal]="isCreateLectureModalOpen" (closeModal)="isCreateLectureModalOpen = false">
+  <app-create-lecture-form (formSubmit)="isCreateLectureModalOpen = false" [course]="course!"></app-create-lecture-form>
+</app-modal>

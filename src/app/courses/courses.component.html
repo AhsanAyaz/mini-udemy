@@ -1,0 +1,37 @@
+<!-- Page Title -->
+<section class="text-gray-700 body-font mt-10 flex flex-col justify-center items-center">
+  <div class="container mx-auto flex px-5 py-1 items-center justify-center flex-col">
+    <h1 class="title-font text-center sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Explore Our Courses</h1>
+    <p class="text-base text-center leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+      Dive into a variety of subjects with courses taught by top instructors.
+    </p>
+  </div>
+</section>
+
+<div class="container px-5 py-2 mx-auto flex items-center justify-end">
+  <button (click)="isCreateCourseModalOpen = true"
+    class="bg-blue-500 hover:bg-blue-600 text-white flex items-center gap-1 font-bold py-2 px-4 rounded">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    Create
+  </button>
+</div>
+
+<!-- Courses Section -->
+<section class="text-gray-600 body-font min-h-screen mx-4">
+  <div class="container px-5 py-2 mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      @for (course of courses; track $index) {
+        <app-course-card [course]="course"></app-course-card>
+      }
+      @empty {
+        No courses available. Create one.
+      }
+    </div>
+  </div>
+</section>
+<app-modal [showModal]="isCreateCourseModalOpen" (closeModal)="isCreateCourseModalOpen = false">
+  <app-create-course-form (formSubmit)="isCreateCourseModalOpen = false"></app-create-course-form>
+</app-modal>

@@ -1,0 +1,29 @@
+<div routerLink="/courses/{{course.id}}" class="h-full border-2 border-gray-200 rounded-lg overflow-hidden hover:shadow-md cursor-pointer">
+  <div class="relative">
+    <button class="absolute top-0 right-0 p-2 rounded-md hover:bg-slate-700 bg-slate-900 text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+      </svg>
+    </button>
+    <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{course.imageUrl || 'assets/images/course-placeholder.jpg'}}" alt="course">
+  </div>
+  <div class="p-6">
+    <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{course.title}}</h1>
+    <p class="leading-relaxed mb-3">{{course.description}}</p>
+    <div class="flex items-center flex-wrap ">
+      <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+        Learn More
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+      <span class="text-gray-500 mr-3 inline-flex items-center ml-auto">
+        <!-- Icons or additional details -->
+      </span>
+    </div>
+    <div class="category mt-4">
+      <span class="font-sm bg-blue-600 text-white rounded-md px-1.5 py-1">{{course.category}}</span>
+    </div>
+  </div>
+</div>

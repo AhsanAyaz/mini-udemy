@@ -1,0 +1,26 @@
+<form [formGroup]="lectureForm" (ngSubmit)="onSubmit()" class="space-y-4">
+  <!-- Lecture Title -->
+  <div>
+    <label for="title" class="block text-sm font-medium text-gray-700">Lecture Title</label>
+    <input type="text" id="title" formControlName="title" class="py-1.5 px-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+  </div>
+
+  <div>
+    <label for="description" class="block text-sm font-medium text-gray-700">Lecture Description</label>
+    <textarea id="description" formControlName="description" class="py-1.5 px-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+  </div>
+
+  <!-- Lecture Duration -->
+  <div>
+    <label for="duration" class="block text-sm font-medium text-gray-700">Lecture Duration</label>
+    <input type="text" id="duration" formControlName="duration" class="py-1.5 px-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+  </div>
+
+
+  <!-- Submit Button -->
+  <div class="text-right">
+    <button type="submit" [disabled]="!lectureForm.valid" class="disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-indigo-600 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Create Lecture
+    </button>
+  </div>
+</form>
